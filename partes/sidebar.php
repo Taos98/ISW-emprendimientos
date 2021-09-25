@@ -15,6 +15,9 @@
 
                 <a href="../" class="d-block text-light p-3 border-0"><i class="fas fa-drumstick-bite"></i>
                 Comentarios</a>
+
+                <a href="../login/login.php" class="d-block text-light p-3 border-0"><i class="fas fa-drumstick-bite"></i>
+                Login</a>
                 
             </div>
             <footer class="d-block text-light p-3 border-0">All licences are distribuited by laloski(MODIFICAR)</footer>
