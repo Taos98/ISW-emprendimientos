@@ -1,8 +1,4 @@
 <?php 
-$conexion = mysqli_connect("mysql.face.ubiobio.cl", "g1ieci2021", "g5ieci2021", "g1bd2021");
+$conexion = mysqli_connect("localhost", "root", "", "bd_emprendimiento");
 
-if ($conexion->connect_error){
-    die("CONEXION FALLIDA: " . $conn->connect_error);   
-}
-mysqli_set_charset($conexion, "utf8");
 ?>

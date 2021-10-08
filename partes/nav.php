@@ -25,7 +25,7 @@
                                 <a class="dropdown-item" href="../perfil/perfil.php"><i class="fas fa-user"></i> Mi perfil</a>
                                 
                             <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                                <a class="dropdown-item" href="../login/login.html"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                             </div>
                     </li>
                 </ul>
