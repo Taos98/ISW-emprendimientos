@@ -62,27 +62,6 @@ a:hover {
     border-right: 1px solid var(--grey);
 }
 
-#titulo{
-    width: 500px;
-	height: 50px;
-}
-
-#info_post{
-    width: 500px;
-	height: 100px;
-}
-
-#precio{
-    width: 500px;
-	height: 50px;
-}
-
-#contacto{
-    width: 500px;
-	height: 50px;
-}
-
-  
 @media (max-width: 768px) {
     #sidebar-container {
       display: none;

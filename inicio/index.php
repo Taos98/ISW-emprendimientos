@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <!-- Crear nueva publicación Modal -->
+     <!-- Crear nueva publicación Modal -->
     <div class="modal fade" id="agregarPublicacion" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
