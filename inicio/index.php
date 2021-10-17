@@ -52,10 +52,12 @@
                                     while ($mostrar=mysqli_fetch_array($resultado)) {?>
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                         <div class="mx-auto">
-                                            <h6 class="text-muted"><?php echo $mostrar['titulo'] ?></h6>
+                                            <h2 class="font-weight-bold"><?php echo $mostrar['titulo'] ?></h2>
                                             <!-- foto -->
-                                            <h3 class="font-weight-bold">Publicacion 1</h3>
-                                            <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span> Fecha 1</h6>
+                                            <h5 class="text-muted"><?php echo $mostrar['info_post'] ?></h5>
+                                            <h5 class="text-primary"><span class="iconify" data-icon="clarity:calendar-solid"></span><?php echo"$"; 
+                                            echo $mostrar['precio_post'] ?></h5>
+                                            <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span><?php echo $mostrar['contacto'] ?></h6>
                                     </div>
                                 </div>
                                  <?php       
@@ -94,12 +96,12 @@
                             <div class="for-group col-3">
                                 <label for="img">Selecciona una Imagen:</label>
                                 <input type="file" accept="image/*" onchange="loadFile(event)">
-                                <img id="output" style="width:100%; margin-top:10px;"  src=""/>
+                                <img id="id_imagen" style="width:100%; margin-top:10px;"  src=""/>
                                 <script>
                                     var loadFile = function(event) {
                                         var reader = new FileReader();
                                         reader.onload = function() {
-                                            var output = document.getElementById('output');
+                                            var output = document.getElementById('id_imagen');
                                             output.src = reader.result;
                                         };
                                         reader.readAsDataURL(event.target.files[0]);
