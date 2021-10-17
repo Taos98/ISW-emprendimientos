@@ -53,6 +53,8 @@
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                         <div class="mx-auto">
                                             <h2 class="font-weight-bold"><?php echo $mostrar['titulo'] ?></h2>
+                                            <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $mostrar['id_imagen'] ).'" width="230" height="150" />'?>
+                                            
                                             <!-- foto -->
                                             <h5 class="text-muted"><?php echo $mostrar['info_post'] ?></h5>
                                             <h5 class="text-primary"><span class="iconify" data-icon="clarity:calendar-solid"></span><?php echo"$"; 
