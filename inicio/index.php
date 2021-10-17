@@ -45,14 +45,14 @@
                                     //query pa ver si hay publicaciones:
                                     //$consulta="SELECT*FROM publicacion WHERE disponibilidad ='true'";
 
-                                    $consulta="SELECT*FROM usuario";//query de prueba
+                                    $consulta="SELECT*FROM publicacion";//query de prueba
 
                                     $resultado=mysqli_query($conexion,$consulta);
 
                                     while ($mostrar=mysqli_fetch_array($resultado)) {?>
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                         <div class="mx-auto">
-                                            <h6 class="text-muted"><?php echo $mostrar['nombre_user'] ?></h6>
+                                            <h6 class="text-muted"><?php echo $mostrar['titulo'] ?></h6>
                                             <!-- foto -->
                                             <h3 class="font-weight-bold">Publicacion 1</h3>
                                             <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span> Fecha 1</h6>
@@ -81,7 +81,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST">
+                    <form method="POST" action="../partes/insertar.php">
+                    
 
                         <div class="row">
                             <div class="form-group col-3">
@@ -104,16 +105,17 @@
                                         reader.readAsDataURL(event.target.files[0]);
                                     };
                                 </script>
-                            </div>                            
+                            </div>
                         </div>
-                        <br><div class="row">
+                        <br><br>
+                        <div class="row">
                             <div class="form-group col-3">
                                 <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-3">
-                                <input type="text" id="precio" class="form-control" name="precio" placeholder="Precio" required>
+                                <input type="text" id="precio_post" class="form-control" name="precio_post" size="50" placeholder="Precio" required>
                             </div>
                         </div>
                         <div class="row">
@@ -125,12 +127,12 @@
                         <div class="offset-10">
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>
+                        
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <!-- Optional JavaScript -->
