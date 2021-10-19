@@ -89,14 +89,11 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST" enctype="multipart/form-data" action="../partes/insertar.php">
-
-
                         <div class="row">
                             <div class="form-group col-3">
                                 <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título" required>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="for-group col-10">
                                 <label for="img">Selecciona una Imagen:</label>
@@ -115,7 +112,6 @@
                             </div>
                         </div>
                         <br><br>
-
                         <div class="row">
                             <div class="form-group col-3">
                                 <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
@@ -133,12 +129,10 @@
                                 <input type="text" id="contacto" class="form-control" name="contacto" placeholder="Contacto" required>
                             </div>
                         </div>
-
                         <br><br>
                         <div class="offset-10">
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>
-
                     </form>
                 </div>
             </div>

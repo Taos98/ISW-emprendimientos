@@ -62,21 +62,9 @@ a:hover {
     border-right: 1px solid var(--grey);
 }
 
-#titulo{
-    width: 5000px;
-}
-
 #info_post{
     width: 250px;
 	height: 100px;
-}
-
-#precio_post{
-    width: 250px;
-}
-
-#contacto{
-    width: 250px;
 }
   
 @media (max-width: 768px) {
