@@ -61,11 +61,6 @@ a:hover {
 .stat {
     border-right: 1px solid var(--grey);
 }
-
-#info_post{
-    width: 250px;
-	height: 100px;
-}
   
 @media (max-width: 768px) {
     #sidebar-container {

@@ -61,8 +61,6 @@
                                                 <h5 class="text-muted">Id: <?php echo $mostrar['id_post'] ?></h5>
                                                 <h5 class="text-primary"><i class="fas fa-dollar-sign"></i><?php echo $mostrar['precio_post'] ?></h5>
                                                 <h6 class="text-warning"><i class="fas fa-phone-square-alt"></i></span><?php echo $mostrar['contacto'] ?></h6>
-
-
                                             </div>
                                         </div>
                                     <?php
@@ -139,7 +137,6 @@
         </div>
     </div>
 
-
     <!-- Modificar publicación Modal -->
     <div class="modal fade" id="modificarPublicacion" tabindex="-1">
         <div class="modal-dialog modal-lg" style="max-width: 25%;">
@@ -152,18 +149,17 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST" enctype="multipart/form-data" action="../partes/modificar.php">
-
                         <div class="row">
                             <div class="form-group col-3">
-                                <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título" required> 
+                                <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título" required>
                             </div>
                         </div>
 
                         <div class="row">
-                                    <div class="form-group col-3">
-                                    <input type="text" id="id_post" class="form-control" name="id_post" placeholder="ID" required>
-                                    </div>
-                                </div>
+                            <div class="form-group col-3">
+                                <input type="text" id="id_post" class="form-control" name="id_post" placeholder="ID" required>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="for-group col-10">
@@ -180,29 +176,30 @@
                                         reader.readAsDataURL(event.target.files[0]);
                                     };
                                 </script>
-                                <div class="row">
-                                    <div class="form-group col-3">
-                                        <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
+                            </div>
+                        </div>
 
-                                <div class="row">
-                                    <div class="form-group col-3">
-                                        <input type="number" id="precio_post" class="form-control" name="precio_post" placeholder="Precio" required>
-                                    </div>
-                                </div>
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="number" id="precio_post" class="form-control" name="precio_post" placeholder="Precio" required>
+                            </div>
+                        </div>
 
-                                <div class="row">
-                                    <div class="form-group col-3">
-                                        <input type="text" id="contacto" class="form-control" name="contacto" placeholder="Contacto" required>
-                                    </div>
-                                </div>
-
-                                <br><br>
-                                <div class="offset-10">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
-                                </div>
-
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="text" id="contacto" class="form-control" name="contacto" placeholder="Contacto" required>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="offset-10">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -214,6 +211,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/modal-style.css">
     <!--<script src="../assets/javascript/test.js">
     </script>-->
     <!--Fin sector scripts -->
