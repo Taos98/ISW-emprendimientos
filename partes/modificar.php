@@ -34,15 +34,15 @@ if(!empty($_POST))
 {
     echo"Pasa acá1";
     $output = '';
+    $id_post = mysqli_real_escape_string($conexion, $_POST["id_post"]); 
     $titulo = mysqli_real_escape_string($conexion, $_POST["titulo"]);  
     $info_post = mysqli_real_escape_string($conexion, $_POST["info_post"]);  
     $precio_post = mysqli_real_escape_string($conexion, $_POST["precio_post"]);  
     //$disponibilidad = mysqli_real_escape_string($conexion, $_POST["disponibilidad"]);  
     $contacto = mysqli_real_escape_string($conexion, $_POST["contacto"]);
     //$id_imagen = mysqli_real_escape_string($conexion, $_POST["id_imagen"]);
-    $query = " INSERT INTO publicacion (titulo, info_post, precio_post, contacto, id_imagen)  
-     VALUES('$titulo', '$info_post', $precio_post, '$contacto', '$destino')";
-     echo"Pasa acá2";
+    $query = " UPDATE publicacion SET titulo = '$_POST[titulo]', info_post = '$_POST[info_post]', precio_post = '$_POST[precio_post]', contacto = '$_POST[contacto]', id_imagen = '$destino' WHERE id_post = '27'";
+    echo"Pasa acá2";
     if(mysqli_query($conexion, $query))
     {
      $output.= '<label class="text-success">Registro Insertado Correctamente</label>';
