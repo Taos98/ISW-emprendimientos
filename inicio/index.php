@@ -46,13 +46,10 @@
                                     <?php
                                     ///query para ver si hay publicaciones dependientes de disponibilidad:
                                     //$consulta="SELECT*FROM publicacion WHERE disponibilidad ='true'";
-
-                                    $consulta = "SELECT*FROM publicacion"; //query de prueba
-
+                                    $consulta="SELECT*FROM publicacion";//query de prueba
                                     $resultado = mysqli_query($conexion, $consulta);
 
                                     while ($mostrar = mysqli_fetch_array($resultado)) { ?>
-
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                             <div class="mx-auto">
                                                 <h2 class="font-weight-bold"><?php echo $mostrar['titulo'] ?></h2>
@@ -138,7 +135,7 @@
     </div>
 
     <!-- Modificar publicación Modal -->
-    <div class="modal fade" id="modificarPublicacion" tabindex="-1">
+<div class="modal fade" id="modificarPublicacion" tabindex="-1">
         <div class="modal-dialog modal-lg" style="max-width: 25%;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -151,14 +148,24 @@
                     <form method="POST" enctype="multipart/form-data" action="../partes/modificar.php">
                         <div class="row">
                             <div class="form-group col-3">
+<<<<<<< HEAD
                                 <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título" required>
+=======
+                                <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título"  required>
+>>>>>>> 8ba1c5f231b2c820ed39b0881f9900e881009b63
                             </div>
                         </div>
 
                         <div class="row">
+<<<<<<< HEAD
                             <div class="form-group col-3">
                                 <input type="text" id="id_post" class="form-control" name="id_post" placeholder="ID" required>
                             </div>
+=======
+                                    <div class="form-group col-3">
+                                    <input type="text" id="id_post" class="form-control" name="id_post" placeholder="ID" required>
+                                    </div>
+>>>>>>> 8ba1c5f231b2c820ed39b0881f9900e881009b63
                         </div>
 
                         <div class="row">
@@ -166,6 +173,7 @@
                                 <label for="img">Selecciona una Imagen:</label>
                                 <input type="file" accept="image/*" onchange="loadFile(event)" name="archivo">
                                 <img id="id_imagen" style="width:100%; margin-top:10px;" />
+
                                 <script>
                                     var loadFile = function(event) {
                                         var reader = new FileReader();
@@ -176,6 +184,7 @@
                                         reader.readAsDataURL(event.target.files[0]);
                                     };
                                 </script>
+<<<<<<< HEAD
                             </div>
                         </div>
                         <br><br>
@@ -200,6 +209,31 @@
                         <div class="offset-10">
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>
+=======
+                              
+                                <div class="row">
+                                    <div class="form-group col-3">
+                                        <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-3">
+                                        <input type="number" id="precio_post" class="form-control" name="precio_post" placeholder="Precio" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-3">
+                                        <input type="text" id="contacto" class="form-control" name="contacto" placeholder="Contacto" required>
+                                    </div>
+                                </div>
+
+                                <br><br>
+                                <div class="offset-10">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                </div>
+>>>>>>> 8ba1c5f231b2c820ed39b0881f9900e881009b63
                     </form>
                 </div>
             </div>
