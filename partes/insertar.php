@@ -1,4 +1,5 @@
 <?php
+include('../conexion/conexion.php');
 # definimos la carpeta destino
 $carpetaDestino = "../assets/imagenes/";
 
@@ -12,7 +13,6 @@ if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"]) {
         if (file_exists($carpetaDestino)) {
             $origen = $_FILES["archivo"]["tmp_name"];
             $destino = $carpetaDestino . $_FILES["archivo"]["name"];
-
             # movemos el archivo
             if (move_uploaded_file($origen, $destino)) {
                 echo "<br>" . $_FILES["archivo"]["name"] . " movido correctamente";
@@ -29,10 +29,8 @@ if (isset($_FILES["archivo"]) && $_FILES["archivo"]["name"]) {
     echo "<br>No se ha subido ninguna imagen";
 }
 
-$conexion = mysqli_connect("localhost", "root", "", "bd_emprendimiento_e1");
 if(!empty($_POST))
 {
-    echo"Pasa acá1";
     $output = '';
     $titulo = mysqli_real_escape_string($conexion, $_POST["titulo"]);  
     $info_post = mysqli_real_escape_string($conexion, $_POST["info_post"]);  
@@ -42,11 +40,10 @@ if(!empty($_POST))
     //$id_imagen = mysqli_real_escape_string($conexion, $_POST["id_imagen"]);
     $query = " INSERT INTO publicacion (titulo, info_post, precio_post, contacto, id_imagen)  
      VALUES('$titulo', '$info_post', $precio_post, '$contacto', '$destino')";
-     echo"Pasa acá2";
     if(mysqli_query($conexion, $query))
     {
      $output.= '<label class="text-success">Registro Insertado Correctamente</label>';
-     echo"Pasa acá3";
+     header('Location: ../inicio/index.php');
     }
     echo $output;
 }
