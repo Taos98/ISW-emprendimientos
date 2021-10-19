@@ -53,13 +53,20 @@
                                     
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                         <div class="mx-auto">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarPublicacion"><i class="fas fa-edit"></i></button>
+                                            
+                                            <input type="text" name="input_id_post" value=<?php echo $mostrar['id_post'] ?> readonly>
+                                            <button class="btn btn-primary editar-publicacion" data-id_post="<?php echo $mostrar['id_post'] ?>" data-toggle="modal" data-target="#modificarPublicacion"><i class="fas fa-edit"></i>
+                                        
+                                        
+                                        
+                                        </button>
                                             <h2 class="font-weight-bold"><?php echo $mostrar['titulo'] ?></h2>
                                             <img src="<?php print $mostrar['id_imagen']; ?>"  style="width:100%">
                                             <h5 class="text-muted"><?php echo $mostrar['info_post'] ?></h5>
                                             <h5 class="text-primary"><span class="iconify" data-icon="clarity:calendar-solid"></span><?php echo"$"; 
                                             echo $mostrar['precio_post'] ?></h5>
                                             <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span><?php echo $mostrar['contacto'] ?></h6>
+                                            
                                             
                                     </div>
                                 </div>
@@ -159,7 +166,7 @@
 
                         <div class="row">
                             <div class="form-group col-3">
-                                <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título" required>
+                                <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título"  required>
                             </div>
                         </div>
 
@@ -224,7 +231,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-        <script src="https://code.iconify.design/2/2.0.3/iconify.min.js%22%3E</script>
+        <!-- <script src="https://code.iconify.design/2/2.0.3/iconify.min.js%22%3E"></script> -->
+    <script src="../assets/javascript/test.js">
+        
+    </script>
 </body>
 
 </html>
