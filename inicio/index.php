@@ -53,7 +53,7 @@
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                         <div class="mx-auto">
                                             <h2 class="font-weight-bold"><?php echo $mostrar['titulo'] ?></h2>
-                                            <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $mostrar['id_imagen'] ).'" width="230" height="150" />'?>
+                                            <img src="<?php print $mostrar['id_imagen']; ?>"  style="width:100%">
                                             
                                             <!-- foto -->
                                             <h5 class="text-muted"><?php echo $mostrar['info_post'] ?></h5>
@@ -76,7 +76,7 @@
 
 <!-- Crear nueva publicación Modal -->
 <div class="modal fade" id="agregarPublicacion" tabindex="-1">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg" style="max-width: 25%;">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Nueva Publicación</h5>
@@ -85,20 +85,20 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="../partes/insertar.php">
+                    <form method="POST" enctype="multipart/form-data" action="../partes/insertar.php">
                     
 
                         <div class="row">
                             <div class="form-group col-3">
-                                <input type="text" id="titulo" class="form-control" name="titulo" size="50" placeholder="Título" required>
+                                <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título" required>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="for-group col-3">
+                            <div class="for-group col-10">
                                 <label for="img">Selecciona una Imagen:</label>
-                                <input type="file" accept="image/*" onchange="loadFile(event)">
-                                <img id="id_imagen" style="width:100%; margin-top:10px;"  src=""/>
+                                <input type="file" accept="image/*" onchange="loadFile(event)" name="archivo" >
+                                <img id="id_imagen" style="width:100%; margin-top:10px;"/>
                                 <script>
                                     var loadFile = function(event) {
                                         var reader = new FileReader();
@@ -112,22 +112,26 @@
                             </div>
                         </div>
                         <br><br>
+
                         <div class="row">
                             <div class="form-group col-3">
                                 <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="form-group col-3">
-                                <input type="text" id="precio_post" class="form-control" name="precio_post" size="50" placeholder="Precio" required>
+                                <input type="number" id="precio_post" class="form-control" name="precio_post" placeholder="Precio" required>
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="form-group col-3">
                                 <input type="text" id="contacto" class="form-control" name="contacto" placeholder="Contacto" required>
                             </div>
                         </div>
 
+                        <br><br>
                         <div class="offset-10">
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>

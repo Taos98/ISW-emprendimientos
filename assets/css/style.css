@@ -62,6 +62,12 @@ a:hover {
     border-right: 1px solid var(--grey);
 }
 
+#titulo{
+    width: 250px;
+	height: 100px;
+	
+}
+
 #info_post{
     width: 250px;
 	height: 100px;
