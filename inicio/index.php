@@ -1,8 +1,10 @@
-
-    <!-- head -->
-        <?php include('../partes/head.php') ?>
+<!-- head -->
+<?php include('../partes/head.php')?>
     <!-- fin head -->
-
+    
+    <!-- conexion -->
+    <?php include('../conexion/conexion.php') ?>
+    <!-- fin conexion -->
 
 <body>
     <div class="d-flex" id="content-wrapper">
@@ -27,7 +29,7 @@
                                 <p class="lead text-muted">Revisa las últimas publicaciones</p>
                             </div>
                             <div class="col-lg-3 col-md-4 d-flex">
-                                <button class="btn btn-info w-100 align-self-center">Agregar publicacion</button>
+                                <button class="btn btn-info w-100 align-self-center form-control" data-toggle="modal" data-target="#agregarPublicacion">Agregar publicacion</button>
                             </div>
                         </div>
                     </div>
@@ -38,36 +40,39 @@
                     <div class="card rounded-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                                    <div class="mx-auto">
-                                    <h6 class="text-muted">Usuario generico</h6>
-                                        <h3 class="font-weight-bold">Publicacion 1</h3>
-                                        <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span> Fecha 1</h6>
+                                <?php
+                                    //query pa ver si hay publicaciones:
+                                    //$consulta="SELECT*FROM publicacion WHERE disponibilidad ='true'";
+
+                                    $consulta="SELECT*FROM publicacion";//query de prueba
+
+                                    $resultado=mysqli_query($conexion,$consulta);
+
+                                    while ($mostrar=mysqli_fetch_array($resultado)) {?>
+                                    
+                                        <div class="col-lg-3 col-md-6 d-flex stat my-3">
+                                        <div class="mx-auto">
+                                            
+                                            <input type="text" name="input_id_post" value=<?php echo $mostrar['id_post'] ?> readonly>
+                                            <button class="btn btn-primary editar-publicacion" data-id_post="<?php echo $mostrar['id_post'] ?>" data-toggle="modal" data-target="#modificarPublicacion"><i class="fas fa-edit"></i>
+                                        
+                                        
+                                        
+                                        </button>
+                                            <h2 class="font-weight-bold"><?php echo $mostrar['titulo'] ?></h2>
+                                            <img src="<?php print $mostrar['id_imagen']; ?>"  style="width:100%">
+                                            <h5 class="text-muted"><?php echo $mostrar['info_post'] ?></h5>
+                                            <h5 class="text-primary"><span class="iconify" data-icon="clarity:calendar-solid"></span><?php echo"$"; 
+                                            echo $mostrar['precio_post'] ?></h5>
+                                            <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span><?php echo $mostrar['contacto'] ?></h6>
+                                            
+                                            
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                                    <div class="mx-auto">
-                                    <h6 class="text-muted">Usuario generico</h6>
-                                        <h3 class="font-weight-bold">Publicacion 2</h3>
-                                        <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span> Fecha 2</h6>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                                    <div class="mx-auto">
-                                    <h6 class="text-muted">Usuario generico</h6>
-                                        <h3 class="font-weight-bold">Publicacion 3</h3>
-                                        <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span> Fecha 3</h6>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 d-flex my-3">
-                                    <div class="mx-auto">
-                                        <h6 class="text-muted">Usuario generico</h6>
-                                        <h3 class="font-weight-bold">Publicacion 4</h3>
-                                        <h6 class="text-warning"><span class="iconify" data-icon="clarity:calendar-solid"></span> Fecha 4</h6>
-                                    </div>
-                                </div>
+                                 <?php       
+                                    }
+                                ?>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -75,6 +80,143 @@
         </div>
     </div>
 </div>
+
+<!-- Crear nueva publicación Modal -->
+<div class="modal fade" id="agregarPublicacion" tabindex="-1">
+        <div class="modal-dialog modal-lg" style="max-width: 25%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva Publicación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" enctype="multipart/form-data" action="../partes/insertar.php">
+                    
+
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="for-group col-10">
+                                <label for="img">Selecciona una Imagen:</label>
+                                <input type="file" accept="image/*" onchange="loadFile(event)" name="archivo" >
+                                <img id="id_imagen" style="width:100%; margin-top:10px;"/>
+                                <script>
+                                    var loadFile = function(event) {
+                                        var reader = new FileReader();
+                                        reader.onload = function() {
+                                            var output = document.getElementById('id_imagen');
+                                            output.src = reader.result;
+                                        };
+                                        reader.readAsDataURL(event.target.files[0]);
+                                    };
+                                </script>
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="number" id="precio_post" class="form-control" name="precio_post" placeholder="Precio" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="text" id="contacto" class="form-control" name="contacto" placeholder="Contacto" required>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <div class="offset-10">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modificar publicación Modal -->
+<div class="modal fade" id="modificarPublicacion" tabindex="-1">
+        <div class="modal-dialog modal-lg" style="max-width: 25%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modificar Publicación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" enctype="multipart/form-data" action="../partes/modificar.php">
+
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="text" id="titulo" class="form-control" name="titulo" placeholder="Título"  required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="for-group col-10">
+                                <label for="img">Selecciona una Imagen:</label>
+                                <input type="file" accept="image/*" onchange="loadFile(event)" name="archivo" >
+                                <img id="id_imagen" style="width:100%; margin-top:10px;"/>
+                                <script>
+                                    var loadFile = function(event) {
+                                        var reader = new FileReader();
+                                        reader.onload = function() {
+                                            var output = document.getElementById('id_imagen');
+                                            output.src = reader.result;
+                                        };
+                                        reader.readAsDataURL(event.target.files[0]);
+                                    };
+                                </script>
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="number" id="precio_post" class="form-control" name="precio_post" placeholder="Precio" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <input type="text" id="contacto" class="form-control" name="contacto" placeholder="Contacto" required>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <div class="offset-10">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -88,37 +230,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-        <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
-       <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, { 
-                type: 'bar',
-                data: {
-                    labels: ['Feb 2020', 'Mar 2020', 'Abr 2020', 'May 2020'],
-                    datasets: [{
-                        label: 'Nuevos equipos',
-                        data: [50, 100, 150, 200],
-                        backgroundColor: [
-                            '#12C9E5',  
-                            '#12C9E5',
-                            '#12C9E5',
-                            '#111B54'
-                        ],
-                        maxBarThickness: 30,
-                        maxBarLength: 2
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-            </script>
+        <!-- <script src="https://code.iconify.design/2/2.0.3/iconify.min.js%22%3E"></script> -->
+    <script src="../assets/javascript/test.js">
+        
+    </script>
 </body>
 
 </html>
