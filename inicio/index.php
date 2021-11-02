@@ -157,7 +157,18 @@
 
                         <div class="row">
                             <div class="form-group col-3">
-                                <input type="text" id="id_post" class="form-control" name="id_post" placeholder="ID" required>
+                                <select id="id_post" name="id_post" class="form-select" require>
+                                    <option selected>Selecciona un ID</option>
+                                    <?php
+                                    $consulta2 = "SELECT * FROM publicacion";
+                                    $resultado = mysqli_query($conexion, $consulta2);
+
+                                    while ($mostrar = mysqli_fetch_array($resultado)) { ?>
+                                    <option><?php echo $mostrar['id_post'] ?></option>
+                                    <?php
+                                    }
+                                    ?>             
+                                </select>
                             </div>
                         </div>
 
