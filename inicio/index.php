@@ -54,14 +54,18 @@
                                     while ($mostrar = mysqli_fetch_array($resultado)) { ?>
 
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                                            <div class="mx-auto">
-                                                <h2 class="font-weight-bold"><?php echo $mostrar['titulo'] ?></h2>
-                                                <img src="<?php print $mostrar['id_imagen']; ?>" style="width:100%">
+                                            
+                                            <div class="card" style="width: 18rem;">
+                                                <img src="<?php print $mostrar['id_imagen']; ?>"  class="card-img-top" alt="...">
+                                                <div class="card-body">
                                                 <h5 class="text-muted"><?php echo $mostrar['info_post'] ?></h5>
                                                 <h5 class="text-muted">Id: <?php echo $mostrar['id_post'] ?></h5>
                                                 <h5 class="text-primary"><i class="fas fa-dollar-sign"></i><?php echo $mostrar['precio_post'] ?></h5>
                                                 <h6 class="text-warning"><i class="fas fa-phone-square-alt"></i></span><?php echo $mostrar['contacto'] ?></h6>
+                                                    <a href="../partes/publicacion.php" class="btn btn-warning">Ver mas</a>
+                                                </div>
                                             </div>
+
                                         </div>
                                     <?php
                                     }
@@ -164,10 +168,10 @@
                                     $resultado = mysqli_query($conexion, $consulta2);
 
                                     while ($mostrar = mysqli_fetch_array($resultado)) { ?>
-                                    <option><?php echo $mostrar['id_post'] ?></option>
+                                        <option><?php echo $mostrar['id_post'] ?></option>
                                     <?php
                                     }
-                                    ?>             
+                                    ?>
                                 </select>
                             </div>
                         </div>
