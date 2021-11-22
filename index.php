@@ -1,1 +1,1 @@
-<?php header('Location: inicio');
+<?php header('Location: login/login.html');
