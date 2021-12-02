@@ -6,12 +6,12 @@
     $_SESSION['email']=$email;
 
     //query a la BD
-    $consulta="SELECT*FROM usuario WHERE email_user='$email' AND password_user='$pass'";
+    $consulta="SELECT*FROM usuario WHERE email_user='$email' AND Password_user='$pass'";
     $resultado=mysqli_query($conexion,$consulta);
 
     if ($resultado->num_rows>0) {
         $data = mysqli_fetch_array($resultado);
-        $_SESSION['nombre'] = $data['nombre_user'];
+        $_SESSION['nombre'] = $data['Nombre_user'];
         //captcha para session
         header("location:../inicio/index.php");
     }else{

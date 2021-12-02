@@ -19,19 +19,35 @@
             <!-- Fin Navbar -->
 
             <!-- Page Content -->
+            <?php
+            $consulta = "SELECT*FROM publicacion"; //query de prueba
+            $resultado = mysqli_query($conexion, $consulta);
+            $mostrar = mysqli_fetch_array($resultado);
+            $id_post = $mostrar['Id_post'];
+            //// ubicar bien esta wea
+            ?>
             <div id="content" class="bg-grey w-100">
 
                 <section class="bg-light py-3">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-9 col-md-8">
-                                <h1 class="font-weight-bold mb-8" style="position: relative;">TITULO publicacion</h1>
-                                <p class="lead text-muted">Descripción publicacion</p>
+                                <h1 class="font-weight-bold mb-8" style="position: relative;"><?php echo $mostrar['titulo_post'] ?></h1>
+                                <p class="lead" style="color: Green;"><?php echo "Precio: " . $mostrar['Precio_post'] ?></p>
+                                <p class="lead text-primary"> <?php echo  "Fecha: " . $mostrar['Fecha_post'] ?></p>
                             </div>
                         </div>
                     </div>
                 </section>
+                <!-- Carrusel imagenes -->
+                <!-- HACER CONSULTAS PERTINENTES PARA LAS FOTOS -->
 
+                <?php
+                $queryImagen = "SELECT*FROM imagenes WHERE Id_post = 1"; //query de prueba
+                $resultadoImagen = mysqli_query($conexion, $consulta);
+                $mostrarImagen = mysqli_fetch_array($resultado);
+
+                ?>
                 <section class="bg-mix py-3">
                     <div class="container">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -41,9 +57,13 @@
                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="../assets/imagenes/144899030_380286746694084_642739976857417403_n.jpg" class="d-block w-100" alt="...">
-                                </div>
+                                <?php while ($mostrarImagen = mysqli_fetch_array($resultadoImagen)) { ?>
+                                    <div class="carousel-item">
+                                        <img src="<?php print $mostrarImagen['Ruta_imagen']; ?>" class="d-block w-100" alt="...">
+                                    </div>
+                                <?php
+                                }
+                                ?>
                                 <div class="carousel-item">
                                     <img src="../assets/imagenes/completoitaliano.jpg" class="d-block w-100" alt="...">
                                 </div>
@@ -62,13 +82,69 @@
                         </div>
                     </div>
                 </section>
+                <!-- Seccion Descripcion producto-->
+                <section>
+                    <div class="container-fluid">
+                        <p class="lead"><?php echo "Estado del producto: " . $mostrar['Estado_post'] ?></p>
+                        <div>
+                            <p class="lead text-muted">Descripción publicacion</p>
+                            <p><?php echo $mostrar['Info_post'] ?></p>
+                        </div>
+                    </div>
+                </section>
+                <!-- Seccion Comentarios-->
+                <section>
+                    <div class="card-body">
+                        <h5 class="lead">Comentarios</h5>
+                        <br>
+                        <div class="container-fluid">
+                            <div class="input-group input-group-lg mb-6">
+                                <input type="text" class="form-control" id="UserComment" placeholder="Comentar..." aria-label="comentario" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-info" type="button" id="button-addon2">Comentar</button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" id="DataBox" value="Usuario que publico:" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" id="CommentBox" value="Contenido del comentario" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" id="DateBox" value="Fecha del comentario" disabled>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" id="DataBox" value="Usuario que publico:" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" id="CommentBox" value="Contenido del comentario" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" id="DateBox" value="Fecha del comentario" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </section>
+
+                <footer>
+
+                </footer>
             </div>
         </div>
     </div>
-    ../assets/imagenes/
 
-    <!--Inicio sector scripts 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
--->
+
+    <!--Inicio sector scripts -->
+    <link rel="stylesheet" href="../assets/css/coment-style.css">
+
 </body>
