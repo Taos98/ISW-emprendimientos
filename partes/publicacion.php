@@ -44,38 +44,29 @@
 
                 <?php
                 $queryImagen = "SELECT*FROM imagenes WHERE Id_post = 1"; //query de prueba
-                $resultadoImagen = mysqli_query($conexion, $consulta);
+                $resultadoImagen = mysqli_query($conexion, $queryImagen);
                 $mostrarImagen = mysqli_fetch_array($resultado);
 
                 ?>
                 <section class="bg-mix py-3">
                     <div class="container">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <?php while ($mostrarImagen = mysqli_fetch_array($resultadoImagen)) { ?>
-                                    <div class="carousel-item">
-                                        <img src="<?php print $mostrarImagen['Ruta_imagen']; ?>" class="d-block w-100" alt="...">
-                                    </div>
-                                <?php
-                                }
-                                ?>
-                                <div class="carousel-item">
-                                    <img src="../assets/imagenes/completoitaliano.jpg" class="d-block w-100" alt="...">
+                                <div class="carousel-item active">
+                                    <img src="<?php print $mostrarImagen['Ruta_imagen']; ?>" class="d-block w-100" alt="123456">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="../assets/imagenes/empanadas-mariscos-570x330.jpg" class="d-block w-100" alt="...">
+                                    <img src="..." class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="..." class="d-block w-100" alt="...">
                                 </div>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
@@ -87,8 +78,8 @@
                     <div class="container-fluid">
                         <p class="lead"><?php echo "Estado del producto: " . $mostrar['Estado_post'] ?></p>
                         <div>
-                            <p class="lead text-muted">Descripción publicacion</p>
-                            <p><?php echo $mostrar['Info_post'] ?></p>
+                            <p class="lead text-info">Descripción publicacion: </p>
+                            <p class="text-muted"><?php echo $mostrar['Info_post'] ?></p>
                         </div>
                     </div>
                 </section>
