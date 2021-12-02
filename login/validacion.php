@@ -12,6 +12,7 @@
     if ($resultado->num_rows>0) {
         $data = mysqli_fetch_array($resultado);
         $_SESSION['nombre'] = $data['nombre_user'];
+        $_SESSION['apellido'] = $data['apellido'];
         //captcha para session
         header("location:../inicio/index.php");
     }else{
