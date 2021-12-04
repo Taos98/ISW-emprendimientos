@@ -20,10 +20,11 @@
 
             <!-- Page Content -->
             <?php
-            $consulta = "SELECT*FROM publicacion"; //query de prueba
+            $id_post = $_POST["id_post_selec"];
+            echo "id: " . $id_post;
+            $consulta = "SELECT*FROM vista_publicacion where id_post_vp = $id_post "; //query de prueba
             $resultado = mysqli_query($conexion, $consulta);
             $mostrar = mysqli_fetch_array($resultado);
-            $id_post = $mostrar['Id_post'];
             //// ubicar bien esta wea
             ?>
             <div id="content" class="bg-grey w-100">
@@ -32,35 +33,31 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-9 col-md-8">
-                                <h1 class="font-weight-bold mb-8" style="position: relative;"><?php echo $mostrar['titulo_post'] ?></h1>
-                                <p class="lead" style="color: Green;"><?php echo "Precio: " . $mostrar['Precio_post'] ?></p>
-                                <p class="lead text-primary"> <?php echo  "Fecha: " . $mostrar['Fecha_post'] ?></p>
+                                <h1 class="font-weight-bold mb-8" style="position: relative;"><?php echo $mostrar['titulo_vp'] ?></h1>
+                                <p class="lead" style="color: Green;"><?php echo "Precio: " . $mostrar['precio_vp'] ?></p>
+                                <p class="lead text-primary"> <?php echo  "Fecha: " . $mostrar['fecha_vp'] ?></p>
                             </div>
                         </div>
                     </div>
                 </section>
                 <!-- Carrusel imagenes -->
-                <!-- HACER CONSULTAS PERTINENTES PARA LAS FOTOS -->
-
-                <?php
-                $queryImagen = "SELECT*FROM imagenes WHERE Id_post = 1"; //query de prueba
-                $resultadoImagen = mysqli_query($conexion, $queryImagen);
-                $mostrarImagen = mysqli_fetch_array($resultado);
-
-                ?>
                 <section class="bg-mix py-3">
                     <div class="container">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="<?php print $mostrarImagen['Ruta_imagen']; ?>" class="d-block w-100" alt="123456">
+                                <?php while ($mostrar) { //aqui arreglar el while mostrar solito da bug ?>
+                                    <div class="carousel-item active">
+                                        <img src="<?php print $mostrar['ruta_imagen_vp'] ?>" class="d-block w-100" alt="...">
+                                    </div>
+                                <?php
+                                }
+                                ?> <!-- 
+                                <div class="carousel-item">
+                                    <img src="" class="d-block w-100" alt="img2">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="..." class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="..." class="d-block w-100" alt="...">
-                                </div>
+                                    <img src="" class="d-block w-100" alt="img1">
+                                </div> -->
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -76,10 +73,10 @@
                 <!-- Seccion Descripcion producto-->
                 <section>
                     <div class="container-fluid">
-                        <p class="lead"><?php echo "Estado del producto: " . $mostrar['Estado_post'] ?></p>
+                        <p class="lead"><?php echo "Estado del producto: " . $mostrar['estado_vp'] ?></p>
                         <div>
                             <p class="lead text-info">Descripción publicacion: </p>
-                            <p class="text-muted"><?php echo $mostrar['Info_post'] ?></p>
+                            <p class="text-muted"><?php echo $mostrar['info_vp'] ?></p>
                         </div>
                     </div>
                 </section>

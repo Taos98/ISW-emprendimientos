@@ -25,7 +25,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-9 col-md-8">
-                                <h1 class="font-weight-bold mb-0">Bienvenido Usuario Generico</h1>
+                                <h1 class="font-weight-bold mb-0">Bienvenido <?php echo $_SESSION['nombre']; ?></h1>
                                 <p class="lead text-muted">Revisa las últimas publicaciones</p>
                             </div>
                             <div class="col-lg-6 col-md-5 d-flex">
@@ -44,26 +44,21 @@
                             <div class="card-body">
                                 <div class="row">
                                     <?php
-                                    ///query para ver si hay publicaciones dependientes de disponibilidad:
-                                    //$consulta="SELECT*FROM publicacion WHERE disponibilidad ='true'";
-
-                                    $consulta = "SELECT*FROM vista_inicio WHERE disponibilidad_vipost = 'disponible' "; //query de prueba
-
+                                    $consulta = "SELECT*FROM vista_inicio WHERE disponibilidad_vipost = 'disponible' "; // corregir para que se muestre solo una publicacion con la immagen correspondiente ya que por img se copia publicacion
                                     $resultado = mysqli_query($conexion, $consulta);
-
                                     while ($mostrar = mysqli_fetch_array($resultado)) { ?>
-
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
-                                            
                                             <div class="card" style="width: 18rem;">
-                                                <img src="<?php print $mostrar['ruta_imagen_vipost']; ?>"  class="card-img-top" alt="...">
+                                                <img src="<?php print $mostrar['ruta_imagen_vipost']; ?>" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                <h5 class="text-primary"><?php echo $mostrar['titulo_vipost'] ?></h5>
-                                                <h5 class="text-muted"><?php echo $mostrar['info_vipost'] ?></h5>
-                                                    <a href="../partes/publicacion.php" class="btn btn-warning">Ver mas</a>
+                                                    <h5 class="text-primary"><?php echo $mostrar['titulo_vipost'] ?></h5>
+                                                    <h5 class="text-muted"><?php echo $mostrar['info_vipost'] ?></h5>
+                                                    <form action="../partes/publicacion.php" method="post" enctype="multipart/form-data">
+                                                        <input type="hidden" id="id_post_selec" name="id_post_selec" value="<?php echo $mostrar['id_vipost'] ?>">
+                                                        <button type="submit" class="btn btn-warning">Ver mas</button>
+                                                    </form>
                                                 </div>
                                             </div>
-
                                         </div>
                                     <?php
                                     }
