@@ -2,17 +2,19 @@
     include("../conexion/conexion.php");
     $email=$_POST['email'];
     $pass=$_POST['pass'];
-    $_SESSION['email'] = $email;
     session_start();
+    $_SESSION['email']=$email;
 
     //query a la BD
-    $consulta="SELECT*FROM usuario WHERE email_user='$email' AND Password_user='$pass'";
+    $consulta="SELECT*FROM usuario WHERE email_user='$email' AND password_user='$pass'";
     $resultado=mysqli_query($conexion,$consulta);
-    $_SESSION['email'] = $resultado['email_user'];
+
     if ($resultado->num_rows>0) {
         $data = mysqli_fetch_array($resultado);
         $_SESSION['nombre'] = $data['Nombre_user'];
-        
+        $_SESSION['apellido'] = $data['Apellido'];
+        $_SESSION['id_usuario'] = $data['Id_user'];
+        //captcha para session
         header("location:../inicio/index.php");
     }else{
         ?>
