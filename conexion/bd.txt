@@ -35,7 +35,7 @@ CREATE TABLE Imagenes(
 
 CREATE TABLE Categorias(  
     Id_categoria int NOT NULL primary key AUTO_INCREMENT,
-    Id_post INT NOT NULL,
+    Id_post int NOT NULL,
     Nombre_categoria VARCHAR(25),
     FOREIGN KEY (Id_post) REFERENCES Publicacion(id_post)
 ) default charset utf8 COMMENT '';
@@ -72,9 +72,10 @@ CREATE VIEW vista_publicacion AS
     publicacion.Info_post AS info_vp,
     publicacion.Precio_post AS precio_vp,
     publicacion.Estado_post AS estado_vp,
-    publicacion.Id_post AS id_post_vp
+    publicacion.Id_post AS id_post_vp,
+    usuario.Contacto_user AS contacto_vp
     from
-        (imagenes join publicacion on (imagenes.Id_post = publicacion.id_post))
+        ((imagenes join publicacion on (imagenes.Id_post = publicacion.Id_post)) join usuario on (publicacion.Id_user = usuario.Id_user))
 );
 
 CREATE VIEW vista_Comentario AS

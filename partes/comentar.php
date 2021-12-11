@@ -3,11 +3,11 @@ include("../conexion/conexion.php");
 session_start();
 date_default_timezone_set('America/Santiago');
 
-$id_usuario = $_SESSION['id_usuario'];
 $id_post = $_POST['IdPost'];
+$id_usuario = $_SESSION['id_usuario'];
+$comentario = $_POST['UserComment'];
 $fecha_hora = date('Y-m-d h:i:s a', time());
 $cantLikes = 0;
-$comentario = $_POST['UserComment'];
 
 echo "esto es una prueba: ".$id_post." ".$id_usuario." ".$fecha_hora." ".$comentario;
 

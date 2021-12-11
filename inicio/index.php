@@ -82,7 +82,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body overflow-y">
                     <form method="POST" enctype="multipart/form-data" action="../partes/insertar.php">
                         <div class="row">
                             <div class="form-group col-3">
@@ -108,8 +108,48 @@
                         </div>
                         <br><br>
                         <div class="row">
+                            <div class="dropdown" id="categoria">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="categoria" data-toggle="dropdown">
+                                    Seleccione Categorias
+                                </button>
+                                <div class="dropdown-menu" id="categoria">
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox"> Alimentos
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox"> Servicios
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox"> Otros...
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="row">
                             <div class="form-group col-3">
                                 <input type="text" id="info_post" class="form-control" name="info_post" placeholder="Descripción" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <label for="disponibilidad">Disponibilidad:</label>
+                                <select class="form-select" name="disponibilidad" id="disponibilidad">
+                                    <option value="1" selected>Disponible</option>
+                                    <option value="2">No disponible</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <label for="estado">Estado: </label>
+                                <select class="form-select" name="estado" id="estado">
+                                    <option value="1" selected>Nuevo</option>
+                                    <option value="2">Usado</option>
+                                    <option value="2">Viejo</option>
+                                </select>
                             </div>
                         </div>
 
