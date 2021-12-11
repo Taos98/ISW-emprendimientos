@@ -1,0 +1,91 @@
+bd_emprendimientos_EF:
+
+CREATE TABLE Usuario(  
+    Id_user int NOT NULL primary key AUTO_INCREMENT COMMENT 'Primary Key',
+    email_user VARCHAR(25),
+    Password_user VARCHAR(10),
+    Nombre_user VARCHAR(25),
+    Apellido_user VARCHAR(25),
+    Contacto_user VARCHAR(11),
+    Descripcion_user VARCHAR(250),
+    ruta_imagen_usuario VARCHAR(255)
+) default charset utf8 COMMENT '';
+
+CREATE TABLE Publicacion(  
+    Id_post int NOT NULL primary key AUTO_INCREMENT,
+    Id_user INT NOT NULL,
+    Info_post VARCHAR(250),
+    Fecha_post DATE,
+    Precio_post INT NOT NULL,
+    Estado_post VARCHAR(10),
+    Disponibilidad_post VARCHAR(15),
+    Valoracion_post INT NOT NULL,
+    titulo_post VARCHAR(12)
+    FOREIGN KEY (Id_user) REFERENCES Usuario(id_user)
+) default charset utf8 COMMENT '';
+
+CREATE TABLE Imagenes(  
+    Id_imagen int NOT NULL primary key AUTO_INCREMENT,
+    Id_user INT NOT NULL,
+    Id_post INT NOT NULL,
+    Ruta_imagen VARCHAR(250),
+    FOREIGN KEY (Id_user) REFERENCES Usuario(id_user),
+    FOREIGN KEY (Id_post) REFERENCES Publicacion(id_post)
+) default charset utf8 COMMENT '';
+
+CREATE TABLE Categorias(  
+    Id_categoria int NOT NULL primary key AUTO_INCREMENT,
+    Id_post INT NOT NULL,
+    Nombre_categoria VARCHAR(25),
+    FOREIGN KEY (Id_post) REFERENCES Publicacion(id_post)
+) default charset utf8 COMMENT '';
+
+CREATE TABLE Comentarios(  
+    Id_comentario int NOT NULL primary key AUTO_INCREMENT,
+    Id_post INT NOT NULL,
+    Id_user INT NOT NULL,
+    Fecha_comentario DATE,
+    Info_comentario VARCHAR(250),
+    Cantidad_likes INT NOT NULL,
+    FOREIGN KEY (Id_user) REFERENCES Usuario(id_user),
+    FOREIGN KEY (Id_post) REFERENCES Publicacion(id_post)
+) default charset utf8 COMMENT '';
+
+CREATE VIEW vista_inicio AS
+(select
+    imagenes.Ruta_imagen AS ruta_imagen_vipost,
+    publicacion.Fecha_post AS fecha_vipost,
+    publicacion.Info_post AS info_vipost,
+    publicacion.Precio_post AS precio_vipost,
+    publicacion.Id_post AS id_vipost,
+    publicacion.Disponibilidad_post AS disponibilidad_vipost,
+    publicacion.titulo_post AS titulo_vipost
+    from
+        (imagenes join publicacion on (imagenes.Id_post = publicacion.id_post))
+);
+
+CREATE VIEW vista_publicacion AS
+(select
+    imagenes.Ruta_imagen AS ruta_imagen_vp,
+    publicacion.Fecha_post AS fecha_vp,
+    publicacion.titulo_post AS titulo_vp,
+    publicacion.Info_post AS info_vp,
+    publicacion.Precio_post AS precio_vp,
+    publicacion.Estado_post AS estado_vp,
+    publicacion.Id_post AS id_post_vp
+    from
+        (imagenes join publicacion on (imagenes.Id_post = publicacion.id_post))
+);
+
+CREATE VIEW vista_Comentario AS
+(select
+
+    usuario.Nombre_user AS nombre_user_vc,
+    usuario.Apellido_user AS apellido_user_vc,
+    comentarios.Id_post AS id_post_vc,
+    comentarios.Fecha_comentario AS fecha_com_vc,
+    comentarios.Info_comentario AS info_com_vc
+
+    from
+        (usuario join comentarios on (usuario.Id_user = comentarios.Id_user))
+);
