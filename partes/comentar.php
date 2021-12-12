@@ -3,16 +3,16 @@ include("../conexion/conexion.php");
 session_start();
 date_default_timezone_set('America/Santiago');
 
-$id_post = $_POST['IdPost'];
+$id_post = mysqli_real_escape_string($conexion, $_POST["IdPost"]);
+$comentario = mysqli_real_escape_string($conexion, $_POST["UserComment"]);
 $id_usuario = $_SESSION['id_usuario'];
-$comentario = $_POST['UserComment'];
-$fecha_hora = date('Y-m-d h:i:s a', time());
+$fecha = date('Y-m-d', time());
 $cantLikes = 0;
 
-echo "esto es una prueba: ".$id_post." ".$id_usuario." ".$fecha_hora." ".$comentario;
+echo "esto es una prueba: ".$id_post." ".$id_usuario." ".$fecha." ".$comentario;
 
 $output = '';
-$query = " INSERT INTO comentarios (Id_post, Id_user, Fecha_comentario, Info_comentario, Cantidad_likes) VALUES('$id_post','$id_usuario','$fecha_hora',$comentario, $cantLikes)";
+$query = " INSERT INTO comentarios (Id_post, Id_user, Fecha_comentario, Info_comentario, Cantidad_likes) VALUES('$id_post','$id_usuario','$fecha','$comentario', $cantLikes)";
 if (mysqli_query($conexion, $query)) {
     $_SESSION['Flag_succes_coment'] = 1; //1 para si / 0 para no
     $_SESSION['Id_post_aft'] = $id_post;

@@ -17,16 +17,14 @@
             <!-- Navbar -->
             <?php include('../partes/nav.php') ?>
             <!-- Fin Navbar -->
-            
+
             <!-- Page Content -->
             <?php
             if ($_SESSION['Flag_succes_coment'] == 1) { //1 para si / 0 para no
                 $id_post =  $_SESSION['Id_post_aft'];
-                echo "id flag success: ". $id_post;
-            }else {
+            } else {
                 $id_post = $_POST['id_post_selec'];
-                $_SESSION['id_post_com'] = $id_post;
-                echo "id flag no success: ". $id_post;
+                $_SESSION['Id_post_aft'] = $_SESSION['id_post_com'];
             }
             $consulta = "SELECT*FROM vista_publicacion where id_post_vp = $id_post ";
             $resultado = mysqli_query($conexion, $consulta);
@@ -54,7 +52,8 @@
                     <div class="container">
                         <div id="carouselIMGs" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <?php //while ($mostrar = mysqli_fetch_array($resultado)) { ?>
+                                <?php //while ($mostrar = mysqli_fetch_array($resultado)) { 
+                                ?>
                                 <div class="carousel-item active">
                                     <img src="<?php print $mostrar['ruta_imagen_vp'] ?>" class="d-block w-100" alt="...">
                                 </div>
@@ -95,49 +94,52 @@
                         <h5 class="lead">Comentarios</h5>
                         <br>
                         <div class="container-fluid">
-                        <form action="../partes/comentar.php" method="POST" enctype="multipart/form-data">
-                            <div class="input-group input-group-lg mb-6">
-                                <input type="text" class="form-control" id="UserComment"  placeholder="Comentar..." aria-label="comentario" aria-describedby="button-addon2">
-                                <input type="hidden" id="IdPost" name="IdPost" value="<?php echo $id_post ?>">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-info" type="submit" id="button-addon2">Comentar</button>
+                            <form action="../partes/comentar.php" method="POST" enctype="multipart/form-data">
+                                <div class="input-group input-group-lg mb-6">
+                                    <input type="text" class="form-control" id="UserComment" name="UserComment" placeholder="Comentar..." aria-label="comentario" aria-describedby="button-addon2">
+                                    <input type="hidden" id="IdPost" name="IdPost" value="<?php echo $id_post ?>">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-info" type="submit" id="button-addon2">Comentar</button>
+                                    </div>
                                 </div>
-                            </div>
                             </form>
                             <br>
                             <div class="container-fluid">
-                            <?php
-                                    $consultaComentario = "SELECT * FROM vista_comentario WHERE id_post_vc = $id_post ";
-                                    $resultadoComentario = mysqli_query($conexion, $consultaComentario);
-                                    while ($mostrarComentario = mysqli_fetch_array($resultadoComentario)) { ?>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" id="DataBox" value="<?php echo $mostrarComentario['nombre_user_vc']." ".$mostrarComentario['apellido_user_vc'] //agregar el if pa cuando este vacio ?>" disabled> 
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" id="CommentBox" value="<?php echo $mostrarComentario['info_com_vc'] ?>" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" id="DateBox" value="<?php echo $mostrarComentario['fecha_com_vc'] ?>" disabled>
-                                    </div>
-                                </div>
-                                <br>
                                 <?php
-                                    }
-                                    ?>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" id="DataBox" value="Usuario que publico:" disabled>
+                                $consultaComentario = "SELECT * FROM vista_comentario WHERE id_post_vc = $id_post ";
+                                $resultadoComentario = mysqli_query($conexion, $consultaComentario);
+                                $flag_mostrarComentario = false;
+                                while ($mostrarComentario = mysqli_fetch_array($resultadoComentario)) {
+                                    $flag_mostrarComentario = true ?>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" id="DataBox" value="<?php echo $mostrarComentario['nombre_user_vc'] . " " . $mostrarComentario['apellido_user_vc'] ?>" disabled>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" id="CommentBox" value="<?php echo $mostrarComentario['info_com_vc'] ?>" disabled>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" id="DateBox" value="<?php echo $mostrarComentario['fecha_com_vc'] ?>" disabled>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <input type="text" id="CommentBox" value="Contenido del comentario" disabled>
+                                    <br>
+                                <?php
+                                }
+                                if ($flag_mostrarComentario == false) { ?>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" id="DataBox" value="------" disabled>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" id="CommentBox" value="No existen comentarios" disabled>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" id="DateBox" value="------" disabled>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <input type="text" id="DateBox" value="Fecha del comentario" disabled>
-                                    </div>
-                                </div>
+                                <?php }
+                                ?>
                             </div>
-
                         </div>
                     </div>
 
