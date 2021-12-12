@@ -5,14 +5,16 @@
     session_start();
     $_SESSION['email']=$email;
 
-    $conexion = mysqli_connect("localhost", "root", "", "bd_emprendimiento");
     //query a la BD
     $consulta="SELECT*FROM usuario WHERE email_user='$email' AND password_user='$pass'";
     $resultado=mysqli_query($conexion,$consulta);
 
-    $filas=mysqli_num_rows($resultado);
-
-    if ($filas) {
+    if ($resultado->num_rows>0) {
+        $data = mysqli_fetch_array($resultado);
+        $_SESSION['nombre'] = $data['Nombre_user'];
+        $_SESSION['apellido'] = $data['Apellido'];
+        $_SESSION['id_usuario'] = $data['Id_user'];
+        //captcha para session
         header("location:../inicio/index.php");
     }else{
         ?>

@@ -61,6 +61,12 @@ a:hover {
 .stat {
     border-right: 1px solid var(--grey);
 }
+<<<<<<< HEAD
+=======
+
+#titulo{
+    width: 250px;
+}
 
 #titulo{
     width: 250px;
@@ -78,6 +84,10 @@ a:hover {
 #contacto{
     width: 250px;
 }
+<<<<<<< HEAD
+>>>>>>> 8ba1c5f231b2c820ed39b0881f9900e881009b63
+=======
+>>>>>>> 8ba1c5f231b2c820ed39b0881f9900e881009b63
   
 @media (max-width: 768px) {
     #sidebar-container {

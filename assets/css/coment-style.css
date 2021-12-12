@@ -1,0 +1,43 @@
+#UserComment{
+    border-width: 2px;
+    border-color: rgba(8, 196, 230, 0.753);
+
+}
+
+
+#DataBox{
+    size-adjust: auto;
+    border-style: solid;
+    border-radius: 10%;
+    border-color: rgba(8, 196, 230, 0.753);
+    border-right: 0;
+    border-left: 0;
+    padding: 1rem;
+    
+
+}
+
+#CommentBox{
+
+    size-adjust: auto;
+    border-style: solid;
+    
+    border-radius: 10%;
+    border-color: rgba(8, 196, 230, 0.753);
+    border-right: 0;
+    border-left: 0;
+    padding: 1rem;
+    
+	
+}
+
+#DateBox{
+
+    size-adjust: auto;
+    border-style: solid;
+    border-radius: 10%;
+    border-color: rgba(8, 196, 230, 0.753);
+    border-right: 0;
+    border-left: 0;
+    padding: 1rem;
+}
