@@ -65,7 +65,6 @@
                                                     <a href="../partes/publicacion.php" class="btn btn-warning">Ver mas</a>
                                                 </div>
                                             </div>
-
                                         </div>
                                     <?php
                                     }
