@@ -44,7 +44,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <?php
-                                    $consulta = "SELECT DISTINCT * FROM vista_inicio WHERE disponibilidad_vipost = 'disponible' "; // corregir para que se muestre solo una publicacion con la immagen correspondiente ya que por img se copia publicacion
+                                    $consulta = "SELECT DISTINCT * FROM vista_inicio "; // corregir para que se muestre solo una publicacion con la immagen correspondiente ya que por img se copia publicacion
                                     $resultado = mysqli_query($conexion, $consulta);
                                     while ($mostrar = mysqli_fetch_array($resultado)) { ?>
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">

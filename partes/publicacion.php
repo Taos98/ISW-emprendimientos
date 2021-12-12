@@ -82,6 +82,12 @@
                             <p class="text-muted"><?php echo $mostrar['info_vp'] ?></p>
                         </div>
                     </div>
+                    <div class="container-fluid">
+                        <div>
+                            <p class="lead text-info">Contacto: </p>
+                            <p class="text-warning"><?php echo $mostrar['contacto_vp'] ?></p>
+                        </div>
+                    </div>
                 </section>
                 <!-- Seccion Comentarios-->
                 <section>

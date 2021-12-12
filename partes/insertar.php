@@ -36,19 +36,35 @@ if (!empty($_POST)) {
     $id_usuario = $_SESSION['id_usuario'];
     $titulo = mysqli_real_escape_string($conexion, $_POST["titulo"]);
     $info_post = mysqli_real_escape_string($conexion, $_POST["info_post"]);
-    $fecha_hora = date('Y-m-d h:i:s a', time());
+    $fecha_hora = date('d-m-y', time());
     $estado_post =  mysqli_real_escape_string($conexion, $_POST["estado"]);
     $precio_post = mysqli_real_escape_string($conexion, $_POST["precio_post"]);
     $disponibilidad = mysqli_real_escape_string($conexion, $_POST["disponibilidad"]);
 
-    $queryPublicacion = " INSERT INTO publicacion (id_user, titulo_post, Info_post, Fecha_post, Precio_post, Estado_post, Disponibilidad_post)  
-     VALUES('$id_usuario','$titulo','$info_post','$fecha_hora','$precio_post','$estado_post', '$disponibilidad')";
+    if ($disponibilidad == 1) {
+        $disponibilidad = 'disponible';
+    }else {
+        $disponibilidad = 'No disponible';
+    }
 
-    $consulta_id_post = "SELECT * FROM publicacion ORDER by ID DESC LIMIT 1"; // con esta query se saca la ultima publicacion para obtener id_post
+    if ($estado_post == 1) {
+        $estado_post = 'Nuevo';
+    }else if ($estado_post == 2) {
+        $estado_post = 'Usado';
+    } else {
+        $estado_post = 'Viejo';
+    }
+
+    $queryPublicacion = " INSERT INTO publicacion (id_user, titulo_post, Info_post, Fecha_post, Precio_post, Estado_post, Disponibilidad_post)  
+     VALUES('$id_usuario','$titulo','$info_post','$fecha_hora','$precio_post','$estado_post','$disponibilidad')";
+
+    $consulta_id_post = "SELECT * FROM publicacion ORDER by Id_post DESC LIMIT 1"; // con esta query se saca la ultima publicacion para obtener id_post
     $resultado_id_post = mysqli_query($conexion, $consulta_id_post);
     $id_pub_res =  mysqli_fetch_array($resultado_id_post);
 
-    $queryImagen = "INSERT INTO imagenes (Id_user, Id_post, Ruta_imagen) VALUES('$id_usuario', '$id_pub_res', '$destino')";
+    $id_post_selec = $id_pub_res['Id_post'];
+    $queryImagen = "INSERT INTO imagenes (Id_user, Id_post, Ruta_imagen) VALUES('$id_usuario', '$id_post_selec', '$destino')";
+
     if (mysqli_query($conexion, $queryPublicacion) && mysqli_query($conexion, $queryImagen)) {
         $output .= '<label class="text-success">Registro Insertado Correctamente</label>';
         header('Location: ../inicio/index.php');
