@@ -9,9 +9,9 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline position-relative d-inline-block my-2">
-                <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar">
-                <button class="btn position-absolute btn-search" type="submit"><i class="icon ion-md-search"></i></button>
+            <form class="form-inline position-relative d-inline-block my-2" action="../partes/search.php" method="POST">
+                <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar" name="buscador">
+                <button class="btn position-absolute btn-search" type="submit" name="submit-buscador"><i class="icon ion-md-search"></i></button>
             </form>
             <?php $query = " SELECT * FROM usuario WHERE email_user = '$email'"?>
             <?php $resultadoQuery = mysqli_query($conexion, $query)?>
