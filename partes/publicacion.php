@@ -56,10 +56,10 @@
                                 <?php //while ($mostrar = mysqli_fetch_array($resultado)) { 
                                 ?>
                                 <div class="carousel-item active">
-                                    <img src="<?php print $mostrar['ruta_imagen_vp'] ?>" class="d-block w-100" alt="...">
+                                    <img src="<?php print $mostrar['ruta_imagen_vp'] ?>" width="680" height="680" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="<?php print $mostrar['ruta_imagen_vp'] ?>" class="d-block w-100" alt="...">
+                                    <img src="<?php print $mostrar['ruta_imagen_vp'] ?>"width="680" height="680"  class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselIMGs" role="button" data-slide="prev">

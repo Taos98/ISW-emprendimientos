@@ -49,7 +49,7 @@
                                     while ($mostrar = mysqli_fetch_array($resultado)) { ?>
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                             <div class="card" style="width: 18rem;">
-                                                <img src="<?php print $mostrar['ruta_imagen_vipost']; ?>" class="card-img-top" alt="...">
+                                                <img src="<?php print $mostrar['ruta_imagen_vipost']; ?>" width="128" height="192" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="text-primary"><?php echo $mostrar['titulo_vipost'] ?></h5>
                                                     <h5 class="text-muted"><?php echo $mostrar['info_vipost'] ?></h5>
