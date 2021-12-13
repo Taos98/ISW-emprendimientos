@@ -44,7 +44,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <?php
-                                    $consulta = "SELECT DISTINCT * FROM vista_inicio"; // corregir para que se muestre solo una publicacion con la immagen correspondiente ya que por img se copia publicacion
+                                    $consulta = "SELECT DISTINCT * FROM vista_inicio";
                                     $resultado = mysqli_query($conexion, $consulta);
                                     while ($mostrar = mysqli_fetch_array($resultado)) { ?>
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
@@ -112,15 +112,78 @@
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="categoria" data-toggle="dropdown">
                                     Seleccione Categorias
                                 </button>
-                                <div class="dropdown-menu" id="categoria">
+                                <div class="dropdown-menu" id="categoria" style="overflow-y: clip">
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox"> Alimentos
+                                        <input type="checkbox" name="Alimentos" value="Alimentos"> Alimentos
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox"> Servicios
+                                        <input type="checkbox" name="Servicios"> Servicios
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox"> Otros...
+                                        <input type="checkbox" name="Limpieza"> Limpieza
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Mecanica" > Mecánica
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Educacion" > Educación
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Transporte"> Transporte
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="TransporteEs"> Transporte escolar
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Utiles" > Útiles
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="  UtilesCocina"> Útiles de Cocina
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="UtilesHogar" > Útiles del Hogar
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="UtilesEscolar" > Útiles Escolares
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="UtilesLibreria"> Útiles de Librería
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Casero" > Casero
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Manualidades"> Manualidades
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Libros" > Libros
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Vestimenta" > Vestimenta
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Menaje" > Menaje
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Joyeria" > Joyería
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Usado" > Usado
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Reciclado" > Reciclado
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Pintura" > Pintura
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Artesania" > Artesanía
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="HechoAmano" > Hecho a Mano
+                                    </span>
+                                    <span class="dropdown-item" type="button">
+                                        <input type="checkbox" name="Otros" > Otros...
                                     </span>
                                 </div>
                             </div>
