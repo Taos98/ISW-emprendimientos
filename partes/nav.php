@@ -20,7 +20,8 @@
                     <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float:right">
                         <?php if ($row = mysqli_fetch_assoc($resultadoQuery)) { ?>
                             <img src="<?php echo $row['ruta_imagen_usuario']; ?>" class="img-fluid rounded-circle avatar mr-2" alt="imagen" />
-                            <?php echo $row['Nombre_user']; ?>
+                            <?php echo $row['Nombre_user'];
+                            $_SESSION['nombre_user'] = $row['Nombre_user'] ?>
                         <?php } ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
