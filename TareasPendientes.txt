@@ -1,0 +1,4 @@
+1) revisar que la valoracion del post se muestre correctamente, ya que se hace el registro de esta, pero no se muestra donde deberia
+2) Implementar la parte del Levy
+3) Corregir la Sidebar con los menus o cosas que corresponda
+4) Hacer pruebas en SV FACE

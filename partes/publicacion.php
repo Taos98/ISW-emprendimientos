@@ -252,6 +252,7 @@
                                 </h4>
                                 <div class="form-group">
                                     <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Ingresa tu usuario" />
+                                    <input type="hidden" name="id_post_rev" id="id_post_rev" class="form-control" value="<?php echo $id_post ?>" />
                                 </div>
                                 <div class="form-group">
                                     <textarea name="user_review" id="user_review" class="form-control" placeholder="¿Como te pareció el producto?"></textarea>
@@ -339,6 +340,8 @@ $('#save_review').click(function(){
 
     var user_review = $('#user_review').val();
 
+    var id_post_rev = $('#id_post_rev').val();
+
     if(user_name == '' || user_review == '')
     {
         alert("Por favor rellene ambos campos");
@@ -349,7 +352,7 @@ $('#save_review').click(function(){
         $.ajax({
             url:"postvaloracionBD.php",
             method:"POST",
-            data:{rating_data:rating_data, user_name:user_name, user_review:user_review},
+            data:{rating_data:rating_data, user_name:user_name, id_post_rev:id_post_rev ,user_review:user_review},
             success:function(data)
             {
                 $('#review_modal').modal('hide');

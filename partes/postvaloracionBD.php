@@ -3,21 +3,23 @@
 //submit_rating.php
 
 $connect = new PDO("mysql:host=localhost;dbname=bd_emprendimientos_ef", "root", "");
+date_default_timezone_set('America/Santiago');
 
 if(isset($_POST["rating_data"]))
 {
 
 	$data = array(
+		':id_post'			=>	$_POST["id_post_rev"],
 		':user_name'		=>	$_POST["user_name"],
 		':user_rating'		=>	$_POST["rating_data"],
 		':user_review'		=>	$_POST["user_review"],
 		':datetime'			=>	time()
 	);
-
+	$id_post_seleccionado = $_POST["id_post_rev"];
 	$query = "
 	INSERT INTO review_table 
-	(user_name, user_rating, user_review, datetime) 
-	VALUES (:user_name, :user_rating, :user_review, :datetime)
+	(Id_post, user_name, user_rating, user_review, datetime) 
+	VALUES (:id_post ,:user_name, :user_rating, :user_review, :datetime)
 	";
 
 	$statement = $connect->prepare($query);
@@ -30,6 +32,8 @@ if(isset($_POST["rating_data"]))
 
 if(isset($_POST["action"]))
 {
+	$id_post_seleccionado = $_POST["id_post_rev"];
+
 	$average_rating = 0;
 	$total_review = 0;
 	$five_star_review = 0;
@@ -41,7 +45,7 @@ if(isset($_POST["action"]))
 	$review_content = array();
 
 	$query = "
-	SELECT * FROM review_table 
+	SELECT * FROM review_table WHERE Id_post = '1'
 	ORDER BY review_id DESC
 	";
 
@@ -53,7 +57,7 @@ if(isset($_POST["action"]))
 			'user_name'		=>	$row["user_name"],
 			'user_review'	=>	$row["user_review"],
 			'rating'		=>	$row["user_rating"],
-			'datetime'		=>	date('l jS, F Y h:i:s A', $row["datetime"])
+			'datetime'		=>	date('Y-m-d', $row["datetime"])
 		);
 
 		if($row["user_rating"] == '5')
