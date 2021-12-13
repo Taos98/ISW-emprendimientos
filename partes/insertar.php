@@ -63,7 +63,7 @@ if (!empty($_POST)) {
     $id_pub_res =  mysqli_fetch_array($resultado_id_post);
 
     $id_post_selec = $id_pub_res['Id_post'];
-    //$id_post_selec = $id_post_selec - 1;
+    $id_post_selec = $id_post_selec + 1;
     $queryImagen = "INSERT INTO imagenes (Id_user, Id_post, Ruta_imagen) VALUES('$id_usuario', '$id_post_selec', '$destino')";
 
     if (mysqli_query($conexion, $queryPublicacion) && mysqli_query($conexion, $queryImagen)) {

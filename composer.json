@@ -1,0 +1,8 @@
+{
+    "composer.workingPath": "C:\\xammp\\htdocs\\ISW-emprendimientos",
+    "composer.executablePath": "C:\\Users\\oscar\\AppData\\Local\\ComposerSetup\\bin\\composer.bat",
+    "require": {
+        "sendinblue/api-v3-sdk": "^7.4",
+        "phpmailer/phpmailer": "^6.5"
+    }
+}
