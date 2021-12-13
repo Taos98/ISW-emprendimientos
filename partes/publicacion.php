@@ -22,9 +22,10 @@
             <?php
             if ($_SESSION['Flag_succes_coment'] == 1) { //1 para si / 0 para no
                 $id_post =  $_SESSION['Id_post_aft'];
+                $_SESSION['Flag_succes_coment'] = 0;
             } else {
                 $id_post = $_POST['id_post_selec'];
-                $_SESSION['Id_post_aft'] = $_SESSION['id_post_com'];
+                $_SESSION['Id_post_aft'] = $id_post;
             }
             $consulta = "SELECT*FROM vista_publicacion where id_post_vp = $id_post ";
             $resultado = mysqli_query($conexion, $consulta);

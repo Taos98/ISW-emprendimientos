@@ -9,7 +9,7 @@ $id_usuario = $_SESSION['id_usuario'];
 $fecha = date('Y-m-d', time());
 $cantLikes = 0;
 
-echo "esto es una prueba: ".$id_post." ".$id_usuario." ".$fecha." ".$comentario;
+//echo "esto es una prueba: ".$id_post." ".$id_usuario." ".$fecha." ".$comentario;
 
 $output = '';
 $query = " INSERT INTO comentarios (Id_post, Id_user, Fecha_comentario, Info_comentario, Cantidad_likes) VALUES('$id_post','$id_usuario','$fecha','$comentario', $cantLikes)";

@@ -44,7 +44,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <?php
-                                    $consulta = "SELECT DISTINCT * FROM vista_inicio "; // corregir para que se muestre solo una publicacion con la immagen correspondiente ya que por img se copia publicacion
+                                    $consulta = "SELECT DISTINCT * FROM vista_inicio"; // corregir para que se muestre solo una publicacion con la immagen correspondiente ya que por img se copia publicacion
                                     $resultado = mysqli_query($conexion, $consulta);
                                     while ($mostrar = mysqli_fetch_array($resultado)) { ?>
                                         <div class="col-lg-3 col-md-6 d-flex stat my-3">
@@ -156,12 +156,6 @@
                         <div class="row">
                             <div class="form-group col-3">
                                 <input type="number" id="precio_post" class="form-control" name="precio_post" placeholder="Precio" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-3">
-                                <input type="text" id="contacto" class="form-control" name="contacto" placeholder="Contacto" required>
                             </div>
                         </div>
                         <br><br>
