@@ -9,20 +9,22 @@ CREATE TABLE Usuario(
     Contacto_user VARCHAR(11),
     Descripcion_user VARCHAR(250),
     ruta_imagen_usuario VARCHAR(255)
-) default charset utf8 COMMENT '';
+) default charset utf8 COMMENT '';                                  **********READY
 
 CREATE TABLE Publicacion(  
     Id_post int NOT NULL primary key AUTO_INCREMENT,
     Id_user INT NOT NULL,
+    titulo_post VARCHAR(12),
     Info_post VARCHAR(250),
     Fecha_post DATE,
     Precio_post INT NOT NULL,
     Estado_post VARCHAR(10),
     Disponibilidad_post VARCHAR(15),
-    Valoracion_post INT NOT NULL,
-    titulo_post VARCHAR(12)
+    categoria VARCHAR(25),
+    categoria2 VARCHAR(25),
+    categoria3 VARCHAR(25),
     FOREIGN KEY (Id_user) REFERENCES Usuario(id_user)
-) default charset utf8 COMMENT '';
+) default charset utf8 COMMENT ''; ****************READY
 
 CREATE TABLE Imagenes(  
     Id_imagen int NOT NULL primary key AUTO_INCREMENT,
@@ -67,16 +69,21 @@ CREATE VIEW vista_inicio AS
 CREATE VIEW vista_publicacion AS
 (select
     imagenes.Ruta_imagen AS ruta_imagen_vp,
+    usuario.Contacto_user AS contacto_vp,
     publicacion.Fecha_post AS fecha_vp,
     publicacion.titulo_post AS titulo_vp,
     publicacion.Info_post AS info_vp,
     publicacion.Precio_post AS precio_vp,
     publicacion.Estado_post AS estado_vp,
     publicacion.Id_post AS id_post_vp,
-    usuario.Contacto_user AS contacto_vp
+    publicacion.categoria AS cat1_vp,
+    publicacion.categoria2 AS cat2_vp,
+    publicacion.categoria3 AS cat3_vp
+    
     from
-        ((imagenes join publicacion on (imagenes.Id_post = publicacion.Id_post)) join usuario on (publicacion.Id_user = usuario.Id_user))
+        ((imagenes join publicacion on (imagenes.Id_post = publicacion.id_post)) join usuario on (publicacion.Id_user = usuario.Id_user))
 );
+
 
 CREATE VIEW vista_Comentario AS
 (select

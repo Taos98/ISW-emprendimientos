@@ -112,78 +112,90 @@
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="categoria" data-toggle="dropdown">
                                     Seleccione Categorias
                                 </button>
-                                <div class="dropdown-menu" id="categoria" style="overflow-y: clip">
+                                <div class="dropdown-menu" id="categoria" style="overflow-y: scroll">
+                                    <script type="text/javascript">
+                                        jQuery(function() {
+                                            var max = 3;
+                                            var checkboxes = jQuery('input[type="checkbox"]');
+
+                                            checkboxes.change(function() {
+                                                var current = checkboxes.filter(':checked').length;
+                                                checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+                                            });
+                                        });
+                                    </script>
+                                    <span class="dropdown-item" type="button"><label for="">Máximo 3 categorías</label> </span>
                                     <span class="dropdown-item" type="button">
                                         <input type="checkbox" name="Alimentos" value="Alimentos"> Alimentos
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Servicios"> Servicios
+                                        <input type="checkbox" name="Servicios" value="Servicios"> Servicios
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Limpieza"> Limpieza
+                                        <input type="checkbox" name="Limpieza" value="Limpieza"> Limpieza
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Mecanica" > Mecánica
+                                        <input type="checkbox" name="Mecanica" value="Mecanica"> Mecánica
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Educacion" > Educación
+                                        <input type="checkbox" name="Educacion" value="Educacion"> Educación
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Transporte"> Transporte
+                                        <input type="checkbox" name="Transporte" value="Transporte"> Transporte
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="TransporteEs"> Transporte escolar
+                                        <input type="checkbox" name="TransporteEs" value="Transporte Escolar"> Transporte escolar
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Utiles" > Útiles
+                                        <input type="checkbox" name="Utiles" value="Utiles"> Útiles
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="  UtilesCocina"> Útiles de Cocina
+                                        <input type="checkbox" name="  UtilesCocina" value="Utiles de Cocina"> Útiles de Cocina
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="UtilesHogar" > Útiles del Hogar
+                                        <input type="checkbox" name="UtilesHogar" value="Utiles del Hogar"> Útiles del Hogar
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="UtilesEscolar" > Útiles Escolares
+                                        <input type="checkbox" name="UtilesEscolar" value="Utiles Escolares"> Útiles Escolares
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="UtilesLibreria"> Útiles de Librería
+                                        <input type="checkbox" name="UtilesLibreria" value="Utiles de Libreria"> Útiles de Librería
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Casero" > Casero
+                                        <input type="checkbox" name="Casero" value="Casero"> Casero
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Manualidades"> Manualidades
+                                        <input type="checkbox" name="Manualidades" value="Manualidades"> Manualidades
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Libros" > Libros
+                                        <input type="checkbox" name="Libros" value="Libros"> Libros
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Vestimenta" > Vestimenta
+                                        <input type="checkbox" name="Vestimenta" value="Vestimenta"> Vestimenta
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Menaje" > Menaje
+                                        <input type="checkbox" name="Menaje" value="Menaje"> Menaje
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Joyeria" > Joyería
+                                        <input type="checkbox" name="Joyeria" value="Joyería"> Joyería
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Usado" > Usado
+                                        <input type="checkbox" name="Usado" value="Usado"> Usado
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Reciclado" > Reciclado
+                                        <input type="checkbox" name="Reciclado" value="Reciclado"> Reciclado
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Pintura" > Pintura
+                                        <input type="checkbox" name="Pintura" value="Pintura"> Pintura
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Artesania" > Artesanía
+                                        <input type="checkbox" name="Artesania" value="Artesania"> Artesanía
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="HechoAmano" > Hecho a Mano
+                                        <input type="checkbox" name="HechoAmano" value="Hecho a Mano"> Hecho a Mano
                                     </span>
                                     <span class="dropdown-item" type="button">
-                                        <input type="checkbox" name="Otros" > Otros...
+                                        <input type="checkbox" name="Otros" value="Otros"> Otros...
                                     </span>
                                 </div>
                             </div>

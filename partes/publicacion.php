@@ -45,16 +45,10 @@
                     </div>
                 </section>
                 <!-- Carrusel imagenes -->
-                <?php
-                $consultaImg = "SELECT*FROM vista_publicacion where id_post_vp = $id_post";
-                $resultadoImg = mysqli_query($conexion, $consultaImg);
-                ?>
                 <section class="bg-mix py-3">
                     <div class="container">
                         <div id="carouselIMGs" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <?php //while ($mostrar = mysqli_fetch_array($resultado)) { 
-                                ?>
                                 <div class="carousel-item active">
                                     <img src="<?php print $mostrar['ruta_imagen_vp'] ?>" width="680" height="680" class="d-block w-100" alt="...">
                                 </div>
@@ -73,22 +67,46 @@
                         </div>
                     </div>
                 </section>
+                <!-- Seccion Categorias producto-->
+                <section style="margin-bottom: 1rem;">
+                    <div class="row" style="margin-left: 2rem;">
+                    <h4 class="lead text-info" style="margin-right: 1rem;"> Categorias: </h4>
+                        <button type="button" class="btn btn-outline-success" style="margin-right: 3rem;">
+                        <?php if(empty($mostrar['cat1_vp'])){
+                            echo "Sin categoria asociada";
+                        } else  echo $mostrar['cat1_vp'] ?>
+                    </button>
+                        <button type="button" class="btn btn-outline-danger" style="margin-right: 3rem;">
+                        <?php if(empty($mostrar['cat2_vp'])){
+                            echo "Sin categoria asociada";
+                        } else  echo $mostrar['cat2_vp'] ?>
+                    </button>
+                        <button type="button" class="btn btn-outline-info"><?php echo $mostrar['cat3_vp'] ?>
+                        <?php if(empty($mostrar['cat3_vp'])){
+                            echo "Sin categoria asociada";
+                        } else  echo $mostrar['cat3_vp'] ?>
+                    </button>
+                    </div>
+                </section>
                 <!-- Seccion Descripcion producto-->
                 <section>
-                    <div class="container-fluid">
-                        <p class="lead"><?php echo "Estado del producto: " . $mostrar['estado_vp'] ?></p>
-                        <div>
-                            <p class="lead text-info">Descripción publicacion: </p>
-                            <p class="text-muted"><?php echo $mostrar['info_vp'] ?></p>
+                    <div class="row" style="margin-left: 2rem;">
+                        <div class="container-fluid">
+                            <p class="lead"><?php echo "Estado del producto: " . $mostrar['estado_vp'] ?></p>
+                            <div>
+                                <p class="lead text-info">Descripción publicacion: </p>
+                                <p class="text-muted"><?php echo $mostrar['info_vp'] ?></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="container-fluid">
-                        <div>
-                            <p class="lead text-info">Contacto: </p>
-                            <p class="text-warning"><?php echo $mostrar['contacto_vp'] ?></p>
+                        <div class="container-fluid">
+                            <div>
+                                <p class="lead text-info">Contacto: </p>
+                                <p class="text-warning"><?php echo $mostrar['contacto_vp'] ?></p>
+                            </div>
                         </div>
                     </div>
                 </section>
+
                 <!--SECCION VALORACION PRODUCTO OSKHAR-->
                 <section>
                     <div class="container">
