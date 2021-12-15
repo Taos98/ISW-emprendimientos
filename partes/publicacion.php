@@ -81,7 +81,7 @@
                             echo "Sin categoria asociada";
                         } else  echo $mostrar['cat2_vp'] ?>
                     </button>
-                        <button type="button" class="btn btn-outline-info"><?php echo $mostrar['cat3_vp'] ?>
+                        <button type="button" class="btn btn-outline-info">
                         <?php if(empty($mostrar['cat3_vp'])){
                             echo "Sin categoria asociada";
                         } else  echo $mostrar['cat3_vp'] ?>
