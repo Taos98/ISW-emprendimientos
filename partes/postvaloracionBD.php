@@ -1,6 +1,9 @@
 <?php
 $connect = new PDO("mysql:host=localhost;dbname=bd_emprendimientos_ef", "root", "");
-$id_post = $_REQUEST['id_val'];
+session_start();
+
+$id_post_sel = htmlentities($_SESSION['Id_post_aft'],ENT_QUOTES,'utf-8');
+
 if(isset($_POST["rating_data"]))
 {
 
@@ -21,9 +24,11 @@ if(isset($_POST["rating_data"]))
 
 	$statement->execute($data);
 
-	echo "Gracias por el feedback!!!, Tu respuesta ha sido guardada con éxito"."  el id es: ". $id_post;
+	echo "Gracias por el feedback!!!, Tu respuesta ha sido guardada con éxito";
 
-	if(isset($_POST["action"]))
+}
+
+if(isset($_POST["action"]))
 {
 	$average_rating = 0;
 	$total_review = 0;
@@ -37,7 +42,7 @@ if(isset($_POST["rating_data"]))
 
 	$query = "
 	SELECT * FROM valoracion 
-	WHERE id_post = '$id_post'
+	WHERE id_post = {$id_post_sel}
 	";
 
 	$result = $connect->query($query, PDO::FETCH_ASSOC);
@@ -97,7 +102,6 @@ if(isset($_POST["rating_data"]))
 
 	echo json_encode($output);
 
-}
 }
 
 
