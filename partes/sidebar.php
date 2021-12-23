@@ -7,14 +7,8 @@
                 <a href="../inicio/index.php" class="d-block text-light p-3 border-0"><i class="fas fa-tachometer-alt"></i>
                     Inicio</a>
 
-                <a href="../inicio/index.php" class="d-block text-light p-3 border-0"><i class="fas fa-users"></i>
-                    Mis ventas</a>
-
-                <a href="../inicio/index.php" class="d-block text-light p-3 border-0"><i class="fas fa-shopping-cart"></i>
-                    Mis compras</a>
-
-                <a href="../inicio/index.php" class="d-block text-light p-3 border-0"><i class="fas fa-drumstick-bite"></i>
-                Comentarios</a>
+                <a href="../perfil/perfil.php" class="d-block text-light p-3 border-0"><i class="fas fa-users"></i>
+                    Perfil</a>
             </div>
             
         </div>

@@ -18,9 +18,9 @@
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float:right">
-                        <?php if($mostrarFoto = mysqli_fetch_array($resultadoQuery)) { ?>
-                        <img src="<?php echo $mostrarFoto['imagen_user'];?>" class="img-fluid rounded-circle avatar mr-2" alt="imagen" />
-                        <?php echo $_SESSION['nombre']; ?>
+                        <?php if($row = mysqli_fetch_assoc($resultadoQuery)) { ?>
+                        <img src="<?php echo $row['imagen_user'];?>" class="img-fluid rounded-circle avatar mr-2" alt="imagen" />
+                        <?php echo $row['nombre_user']; ?>
                         <?php } ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
